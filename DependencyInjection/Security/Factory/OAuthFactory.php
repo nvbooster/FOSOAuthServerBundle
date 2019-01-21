@@ -39,6 +39,7 @@ class OAuthFactory implements SecurityFactoryInterface
         $container
             ->setDefinition($providerId, $definition)
             ->replaceArgument(0, new Reference($userProvider))
+            ->replaceArgument(2, new Reference('security.user_checker.'.$id))
         ;
 
         $listenerId = 'security.authentication.listener.fos_oauth_server.'.$id;
